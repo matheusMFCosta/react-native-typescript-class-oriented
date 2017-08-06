@@ -1,10 +1,20 @@
-// import {Action, createAction }from 'redux-actions';
-// import { Teste } from './listMethods'
+import { App } from "./listMethods";
+import { Operation, assign } from "./../utils/functions";
 
-// export const TESTE = "TESTE"
+export enum appActionsName {
+    INIT_APP = "INIT_APP"
+}
 
-// //export const teste: () => Action = createAction<null>(TESTE)
+export class appInit implements Operation {
+    public type: string = appActionsName.INIT_APP;
 
-// export const teste: (wow:boolean) => Action = createAction<boolean>(
-//     TESTE, (wow) => { console.log(wow); return(wow) }
-// );
+    constructor(public payload: boolean) {}
+
+    public Reduce(state: App): App {
+        return assign(state, { init: this.payload });
+    }
+}
+
+export const appActions = {
+    appInit
+};

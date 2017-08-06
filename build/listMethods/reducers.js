@@ -1,18 +1,14 @@
-// import {
-//   TESTE
-// } from './actions'
-const testeInitialState = {
-    teste: false
+//import { assign } from "lodash";
+var { filterActions } = require("redux-ignore");
+import { appActionsName } from "./actions";
+const multifactorInitialState = {
+    init: false
 };
-function assign(state, patch) {
-    return Object.assign({}, state, patch);
-}
-export function todoApp(state = {}, action) {
-    switch (action.type) {
-        case "TOGGLE_TODO":
-            return state;
-        default:
-            return state;
+export const appReducerNoFilter = (state = multifactorInitialState, action) => {
+    if (action.Reduce) {
+        return action.Reduce(state);
     }
-}
+    return state;
+};
+export const appReducer = filterActions(appReducerNoFilter, Object.keys(appActionsName));
 //# sourceMappingURL=reducers.js.map

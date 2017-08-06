@@ -1,4 +1,7 @@
 import { combineReducers } from "redux";
-import { todoApp } from "./../listMethods/reducers";
-export default combineReducers({ todoApp: todoApp });
+import { appReducer } from "./../listMethods/reducers";
+const reducers = {
+    app: appReducer
+};
+export default combineReducers(reducers);
 //# sourceMappingURL=index.js.map

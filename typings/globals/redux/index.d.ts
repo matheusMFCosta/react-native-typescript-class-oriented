@@ -17,9 +17,8 @@ declare namespace Redux {
      * how actions should be constructed.
      */
     interface Action {
-      type: any;
+        type: any;
     }
-
 
     /* reducers */
 
@@ -52,7 +51,7 @@ declare namespace Redux {
      * Object whose values correspond to different reducer functions.
      */
     interface ReducersMapObject {
-      [key: string]: Reducer<any>;
+        [key: string]: Reducer<any>;
     }
 
     /**
@@ -73,8 +72,7 @@ declare namespace Redux {
      * @returns A reducer function that invokes every reducer inside the passed
      *   object, and builds a state object with the same shape.
      */
-    function combineReducers<S>(reducers: ReducersMapObject): Reducer<S>;
-
+    function combineReducers<S>(reducers: any): Reducer<S>;
 
     /* store */
 
@@ -104,7 +102,7 @@ declare namespace Redux {
      * Function to remove listener added by `Store.subscribe()`.
      */
     interface Unsubscribe {
-      (): void;
+        (): void;
     }
 
     /**
@@ -115,7 +113,7 @@ declare namespace Redux {
      * @template S State object type.
      */
     interface Store<S> {
-      /**
+        /**
        * Dispatches an action. It is the only way to trigger a state change.
        *
        * The `reducer` function, used to create the store, will be called with the
@@ -141,16 +139,16 @@ declare namespace Redux {
        * Note that, if you use a custom middleware, it may wrap `dispatch()` to
        * return something else (for example, a Promise you can await).
        */
-      dispatch: Dispatch<S>;
+        dispatch: Dispatch<S>;
 
-      /**
+        /**
        * Reads the state tree managed by the store.
        *
        * @returns The current state tree of your application.
        */
-      getState(): S;
+        getState(): S;
 
-      /**
+        /**
        * Adds a change listener. It will be called any time an action is
        * dispatched, and some part of the state tree may potentially have changed.
        * You may then call `getState()` to read the current state tree inside the
@@ -174,9 +172,9 @@ declare namespace Redux {
        * @param listener A callback to be invoked on every dispatch.
        * @returns A function to remove this change listener.
        */
-      subscribe(listener: () => void): Unsubscribe;
+        subscribe(listener: () => void): Unsubscribe;
 
-      /**
+        /**
        * Replaces the reducer currently used by the store to calculate the state.
        *
        * You might need this if your app implements code splitting and you want to
@@ -185,7 +183,7 @@ declare namespace Redux {
        *
        * @param nextReducer The reducer for the store to use instead.
        */
-      replaceReducer(nextReducer: Reducer<S>): void;
+        replaceReducer(nextReducer: Reducer<S>): void;
     }
 
     /**
@@ -197,8 +195,8 @@ declare namespace Redux {
      * @template S State object type.
      */
     interface StoreCreator {
-      <S>(reducer: Reducer<S>, enhancer?: StoreEnhancer<S>): Store<S>;
-      <S>(reducer: Reducer<S>, preloadedState: S, enhancer?: StoreEnhancer<S>): Store<S>;
+        <S>(reducer: Reducer<S>, enhancer?: StoreEnhancer<S>): Store<S>;
+        <S>(reducer: Reducer<S>, preloadedState: S, enhancer?: StoreEnhancer<S>): Store<S>;
     }
 
     /**
@@ -253,12 +251,11 @@ declare namespace Redux {
      */
     const createStore: StoreCreator;
 
-
     /* middleware */
 
     interface MiddlewareAPI<S> {
-      dispatch: Dispatch<S>;
-      getState(): S;
+        dispatch: Dispatch<S>;
+        getState(): S;
     }
 
     /**
@@ -271,7 +268,7 @@ declare namespace Redux {
      * asynchronous API call into a series of synchronous actions.
      */
     interface Middleware {
-      <S>(api: MiddlewareAPI<S>): (next: Dispatch<S>) => Dispatch<S>;
+        <S>(api: MiddlewareAPI<S>): (next: Dispatch<S>) => Dispatch<S>;
     }
 
     /**
@@ -293,7 +290,6 @@ declare namespace Redux {
      */
     function applyMiddleware(...middlewares: Middleware[]): GenericStoreEnhancer;
 
-
     /* action creators */
 
     /**
@@ -314,14 +310,14 @@ declare namespace Redux {
      * @template A Returned action type.
      */
     interface ActionCreator<A> {
-      (...args: any[]): A;
+        (...args: any[]): A;
     }
 
     /**
      * Object whose values are action creator functions.
      */
     interface ActionCreatorsMapObject {
-      [key: string]: ActionCreator<any>;
+        [key: string]: ActionCreator<any>;
     }
 
     /**
@@ -345,18 +341,14 @@ declare namespace Redux {
      */
     function bindActionCreators<A extends ActionCreator<any>>(actionCreator: A, dispatch: Dispatch<any>): A;
 
-    function bindActionCreators<
-      A extends ActionCreator<any>,
-      B extends ActionCreator<any>
-      >(actionCreator: A, dispatch: Dispatch<any>): B;
+    function bindActionCreators<A extends ActionCreator<any>, B extends ActionCreator<any>>(actionCreator: A, dispatch: Dispatch<any>): B;
 
     function bindActionCreators<M extends ActionCreatorsMapObject>(actionCreators: M, dispatch: Dispatch<any>): M;
 
-    function bindActionCreators<
-      M extends ActionCreatorsMapObject,
-      N extends ActionCreatorsMapObject
-      >(actionCreators: M, dispatch: Dispatch<any>): N;
-
+    function bindActionCreators<M extends ActionCreatorsMapObject, N extends ActionCreatorsMapObject>(
+        actionCreators: M,
+        dispatch: Dispatch<any>
+    ): N;
 
     /* compose */
 
@@ -372,28 +364,13 @@ declare namespace Redux {
      */
     function compose(): <R>(a: R, ...args: any[]) => R;
 
-    function compose<A, R>(
-      f1: (b: A) => R,
-      f2: (...args: any[]) => A
-    ): (...args: any[]) => R;
+    function compose<A, R>(f1: (b: A) => R, f2: (...args: any[]) => A): (...args: any[]) => R;
 
-    function compose<A, B, R>(
-      f1: (b: B) => R,
-      f2: (a: A) => B,
-      f3: (...args: any[]) => A
-    ): (...args: any[]) => R;
+    function compose<A, B, R>(f1: (b: B) => R, f2: (a: A) => B, f3: (...args: any[]) => A): (...args: any[]) => R;
 
-    function compose<A, B, C, R>(
-      f1: (b: C) => R,
-      f2: (a: B) => C,
-      f3: (a: A) => B,
-      f4: (...args: any[]) => A
-    ): (...args: any[]) => R;
+    function compose<A, B, C, R>(f1: (b: C) => R, f2: (a: B) => C, f3: (a: A) => B, f4: (...args: any[]) => A): (...args: any[]) => R;
 
-    function compose<R>(
-      f1: (a: any) => R,
-      ...funcs: Function[]
-    ): (...args: any[]) => R;
+    function compose<R>(f1: (a: any) => R, ...funcs: Function[]): (...args: any[]) => R;
 }
 
 declare module "redux" {

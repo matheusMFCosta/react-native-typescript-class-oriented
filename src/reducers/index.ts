@@ -1,4 +1,14 @@
 import { combineReducers } from "redux";
-import { todoApp } from "./../listMethods/reducers";
+import { appReducer } from "./../listMethods/reducers";
 
-export default combineReducers({ todoApp: todoApp });
+import { App } from "./../listMethods/listMethods";
+
+export interface appStateTypings {
+    app: App;
+}
+
+const reducers: appStateTypings = {
+    app: appReducer
+};
+
+export default combineReducers(reducers);

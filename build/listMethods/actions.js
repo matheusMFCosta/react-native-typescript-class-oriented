@@ -1,8 +1,18 @@
-// import {Action, createAction }from 'redux-actions';
-// import { Teste } from './listMethods'
-// export const TESTE = "TESTE"
-// //export const teste: () => Action = createAction<null>(TESTE)
-// export const teste: (wow:boolean) => Action = createAction<boolean>(
-//     TESTE, (wow) => { console.log(wow); return(wow) }
-// );
+import { assign } from "./../utils/functions";
+export var appActionsName;
+(function (appActionsName) {
+    appActionsName["INIT_APP"] = "INIT_APP";
+})(appActionsName || (appActionsName = {}));
+export class appInit {
+    constructor(payload) {
+        this.payload = payload;
+        this.type = appActionsName.INIT_APP;
+    }
+    Reduce(state) {
+        return assign(state, { init: this.payload });
+    }
+}
+export const appActions = {
+    appInit
+};
 //# sourceMappingURL=actions.js.map

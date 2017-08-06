@@ -1,10 +1,12 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import reducer from './reducers/index';
-import devToolsEnhancer from 'remote-redux-devtools';
-//var composeWithDevTools = require('remote-redux-devtools');
-export default (sagaMiddleware, data = {}) => {
+import { createStore, applyMiddleware, compose } from "redux";
+import reducer from "./reducers/index";
+import devToolsEnhancer from "remote-redux-devtools";
+var { createLogicMiddleware } = require("redux-logic");
+import { logicActions } from "./reducers/logic";
+const logicMiddleware = createLogicMiddleware(logicActions, {});
+export default (data = {}) => {
     //const composeEnhancers = composeWithDevTools({ realtime: true, port: 8000 });
-    const middleware = applyMiddleware(sagaMiddleware);
+    const middleware = applyMiddleware(logicMiddleware);
     const composeMiddlware = compose(middleware, devToolsEnhancer());
     return createStore(reducer, data, composeMiddlware);
 };

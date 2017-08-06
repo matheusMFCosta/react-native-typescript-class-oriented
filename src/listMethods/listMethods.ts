@@ -1,3 +1,3 @@
-export interface Teste {
-  teste: boolean
+export interface App {
+    init: boolean;
 }

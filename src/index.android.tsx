@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Provider } from "react-redux";
-import { rootSaga } from "./sagas/index";
 import createSagaMiddleware from "redux-saga";
 import createStore from "./createStore";
 import Router from "./routes";

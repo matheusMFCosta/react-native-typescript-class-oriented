@@ -2,8 +2,6 @@ import React, { PropTypes } from "react";
 import { StyleSheet, View, Text } from "react-native";
 //import { teste } from './actions'
 import { connect } from "react-redux";
-import Navbar from "./components/navbar";
-import List from "./components/List";
 interface Appprops {
     teste: Function;
 }

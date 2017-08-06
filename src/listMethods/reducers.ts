@@ -1,23 +1,18 @@
-// import { handleActions, Action } from 'redux-actions';
-import { Teste } from "./listMethods";
+//import { assign } from "lodash";
+var { filterActions } = require("redux-ignore");
+import { App } from "./listMethods";
+import { appActionsName } from "./actions";
+import { Operation } from "./../utils/functions";
 
-// import {
-//   TESTE
-// } from './actions'
-
-const testeInitialState: Teste = {
-    teste: false
+const multifactorInitialState: App = {
+    init: false
 };
 
-function assign<T>(state: T, patch: Partial<T>): T {
-    return Object.assign({}, state, patch);
-}
-
-export function todoApp(state = {}, action) {
-    switch (action.type) {
-        case "TOGGLE_TODO":
-            return state;
-        default:
-            return state;
+export const appReducerNoFilter = (state: App = multifactorInitialState, action: Operation) => {
+    if (action.Reduce) {
+        return action.Reduce(state);
     }
-}
+    return state;
+};
+
+export const appReducer = filterActions(appReducerNoFilter, Object.keys(appActionsName));
