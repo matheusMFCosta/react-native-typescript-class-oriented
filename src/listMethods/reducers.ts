@@ -14,5 +14,6 @@ export const appReducerNoFilter = (state: App = multifactorInitialState, action:
     }
     return state;
 };
+console.log(filterActions(appReducerNoFilter, Object.keys(appActionsName)))
 
 export const appReducer = filterActions(appReducerNoFilter, Object.keys(appActionsName));

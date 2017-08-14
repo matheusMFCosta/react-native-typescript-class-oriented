@@ -10,5 +10,6 @@ export const appReducerNoFilter = (state = multifactorInitialState, action) => {
     }
     return state;
 };
+console.log(filterActions(appReducerNoFilter, Object.keys(appActionsName)));
 export const appReducer = filterActions(appReducerNoFilter, Object.keys(appActionsName));
 //# sourceMappingURL=reducers.js.map

@@ -6,6 +6,12 @@ import { logicActions } from "./reducers/logic";
 
 const logicMiddleware = createLogicMiddleware(logicActions, {});
 
+const wwow = asads => dswe => asd => {
+    console.log(asd)
+    console.log(asd)
+    console.log(asd)
+    dswe(asd)
+}
 export default (data = {}) => {
     //const composeEnhancers = composeWithDevTools({ realtime: true, port: 8000 });
     const middleware = applyMiddleware(logicMiddleware);
