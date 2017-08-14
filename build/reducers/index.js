@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { appReducer } from "./../listMethods/reducers";
+import { appReducer } from "./../app/reducers";
 const reducers = {
     app: appReducer
 };

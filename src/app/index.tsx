@@ -6,7 +6,7 @@ interface Appprops {
     teste: Function;
 }
 
-class listMethods extends React.Component<any, {}> {
+class App extends React.Component<any, {}> {
     constructor(props, context) {
         super(props, context);
     }
@@ -24,4 +24,4 @@ const mapStateToProps = (state, ownProps) => ({});
 
 const mapDispatchToProps = dispatch => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(listMethods);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

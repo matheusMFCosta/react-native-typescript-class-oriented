@@ -1,4 +1,4 @@
-import { App } from "./listMethods";
+import { App } from "./app";
 import { Operation, assign } from "./../utils/functions";
 
 export enum appActionsName {

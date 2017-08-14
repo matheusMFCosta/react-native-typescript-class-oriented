@@ -1,6 +1,6 @@
 //import { assign } from "lodash";
 var { filterActions } = require("redux-ignore");
-import { App } from "./listMethods";
+import { App } from "./app";
 import { appActionsName } from "./actions";
 import { Operation } from "./../utils/functions";
 

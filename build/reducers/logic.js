@@ -1,5 +1,5 @@
 import createLogic from "./../utils/createLogic";
-import { appActions } from "./../listMethods/actions";
+import { appActions } from "./../app/actions";
 const actionsArray = [...Object.values(appActions)];
 export let logicActions = [];
 actionsArray.forEach((value, index) => {

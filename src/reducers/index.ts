@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
-import { appReducer } from "./../listMethods/reducers";
+import { appReducer } from "./../app/reducers";
 
-import { App } from "./../listMethods/listMethods";
+import { App } from "./../app/app";
 
 export interface appStateTypings {
     app: App;
